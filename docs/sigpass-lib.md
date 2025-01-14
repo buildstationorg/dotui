@@ -23,3 +23,6 @@ import { getSigpassWallet } from '@/lib/sigpass';
 
 const wallet = await getSigpassWallet('My Wallet');
 ```
+
+## Understanding the library
+

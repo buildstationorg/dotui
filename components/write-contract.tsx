@@ -1,6 +1,9 @@
 "use client";
 
+// React imports
 import { useState, useEffect } from "react";
+
+// Wagmi imports
 import {
   type BaseError,
   useWaitForTransactionReceipt,
@@ -9,7 +12,11 @@ import {
   useReadContracts,
   useAccount
 } from "wagmi";
+
+// Viem imports
 import { parseUnits, formatUnits, isAddress, Address } from "viem";
+
+// Lucide imports (for icons)
 import {
   Ban,
   ExternalLink,
@@ -20,9 +27,17 @@ import {
   CircleCheck,
   WalletMinimal
 } from "lucide-react";
+
+// Zod imports
 import { z } from "zod";
+
+// Zod resolver imports
 import { zodResolver } from "@hookform/resolvers/zod";
+
+// React hook form imports
 import { useForm } from "react-hook-form";
+
+// UI imports
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -55,8 +70,14 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+
+// Utils imports
 import { truncateHash } from "@/lib/utils";
+
+// Component imports
 import CopyButton from "@/components/copy-button";
+
+// Library imports
 import { getSigpassWallet } from "@/lib/sigpass";
 import { westendAssetHub } from "@/app/providers";
 import { useAtomValue } from 'jotai'
@@ -111,6 +132,7 @@ export default function WriteContract() {
     config: address ? localConfig : config,
   })
 
+  // get the max balance and decimals from the data
   const maxBalance = data?.[0]?.result as bigint | undefined;
   const decimals = data?.[1]?.result as number | undefined;
 
@@ -172,7 +194,6 @@ export default function WriteContract() {
       });
     } else {
       // Fallback to connected wallet
-      console.log(decimals);
       writeContractAsync({
         address: USDC_CONTRACT_ADDRESS,
         abi: erc20Abi,

@@ -15,3 +15,5 @@ import { SigpassKit } from '@/components/sigpasskit';
 
 <SigpassKit />
 ```
+
+## Understanding the code
