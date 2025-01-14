@@ -14,6 +14,23 @@ This is an opinionated UI scaffolding kit for the Polkadot ecosystem (starting w
 - [Zod](https://zod.dev/)
 - [React Hook Form](https://react-hook-form.com/)
 
+## Features
+
+- [x] Multi-chain support
+- [x] In-dapp-wallet support
+- [x] WalletConnect support
+- [x] Collection of web3 components to quickly build your frontend or use as a reference
+- [x] React hooks for various onchain interactions with Wagmi
+
+## Requirements
+
+Before you begin, you need to install the following tools:
+
+- [Node (current LTS version)](https://nodejs.org/en/download/)
+- [npm (latest version or > v10)](https://www.npmjs.com/get-npm)
+- [Git](https://git-scm.com/downloads)
+
+
 ## Getting started
 
 ```
@@ -43,4 +60,12 @@ Default port is 3002. You can change the port in the `package.json` file.
 ```
 npm run build
 ```
+
+## Documentation
+
+
+## Contributing to DotUI
+We welcome contributions to DotUI!
+
+Please see CONTRIBUTING.MD for more information and guidelines for contributing to DotUI.
 
