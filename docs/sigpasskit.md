@@ -55,6 +55,21 @@ export default function RootLayout({
 }
 ```
 
+Go to `next.config.mjs` and add the following to the `webpack` config:
+
+```tsx
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  webpack: config => {
+    config.externals.push('pino-pretty', 'lokijs', 'encoding');
+    return config;
+  },
+};
+
+export default nextConfig;
+```
+
 Import the component into your `app/page.tsx` file like below.
 
 ```tsx
