@@ -63,9 +63,11 @@ npm run build
 
 ## Documentation
 
+Please see [`docs`](docs) for more information and guidelines for contributing to DotUI.
 
 ## Contributing to DotUI
+
 We welcome contributions to DotUI!
 
-Please see CONTRIBUTING.MD for more information and guidelines for contributing to DotUI.
+Please see [`CONTRIBUTING.md`](CONTRIBUTING.md) for more information and guidelines for contributing to DotUI.
 
