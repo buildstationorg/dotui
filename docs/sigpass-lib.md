@@ -2,7 +2,7 @@
 
 ## Installation
 
-Copy and paste the code in `sigpass.ts` into your project.
+Copy and paste the code in [`lib/sigpass.ts`](../lib/sigpass.ts) into your project.
 
 ## Usage
 
@@ -92,10 +92,18 @@ async function getOrThrow(id: Uint8Array) {
 }
 ```
 
-For `createOrThrow`, you pass in the `name` and `data` to store. `data` is arbitrary data of 64 bytes or less (there is a hard limit of 64 bytes with WebAuthn).
+For `createOrThrow`, you pass in the `name` and `data` to store. `data` is arbitrary data of 64 bytes or less (there is a hard limit of 64 bytes with WebAuthn). `sigpass` library uses `WebAuthn` to store a random `Uint8Array` into `WebAuthn` storage.
 
-For `getOrThrow`, you pass in the `id` of the data you want to retrieve.
+For `getOrThrow`, you pass in the `id` of the data you want to retrieve. `sigpass` library uses `WebAuthn` to retrieve the `Uint8Array` from `WebAuthn` storage.
 
-Other functions are just wrappers around these 2 functions to make it easier to use like `createSigpassWallet` and `getSigpassWallet`.
+The entropy (in this case the random `Uint8Array`) is used to derive the `mnemonic` and then the `address` of the wallet. This is done using the following libraries:
+
+```ts
+// evm
+import { mnemonicToAccount } from 'viem/accounts' // from viem
+// bip39
+import * as bip39 from '@scure/bip39'; // from @scure/bip39
+import { wordlist } from '@scure/bip39/wordlists/english'; // from @scure/bip39
+```
 
 If you want a drop in component, you can use `SigpassKit` component. Read more about it [here](docs/sigpasskit.md).
