@@ -3,6 +3,11 @@
  * 
  */
 
+/**
+ * Adopted https://github.com/hazae41/webauthnstorage
+ * by Hazae41
+ */
+
 // evm
 import { mnemonicToAccount } from 'viem/accounts'
 // bip39

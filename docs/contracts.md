@@ -1,5 +1,7 @@
 # Contracts
 
+Some deployed contracts on Asset Hub for testing purposes.
+
 ## Mock USDC
 
 | Name | Value |
