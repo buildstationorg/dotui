@@ -1,6 +1,9 @@
 "use client";
 
+// React
 import { useState, useEffect } from "react";
+
+// Wagmi
 import {
   type BaseError,
   useWaitForTransactionReceipt,
@@ -9,7 +12,11 @@ import {
   useReadContracts,
   useAccount
 } from "wagmi";
+
+// viem
 import { parseUnits, formatUnits } from "viem";
+
+// Lucide (for icons)
 import {
   Ban,
   ExternalLink,
@@ -21,9 +28,15 @@ import {
   WalletMinimal,
   HandCoins,
 } from "lucide-react";
+
+// zod (for form validation)
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+// react-hook-form (for form handling)
 import { useForm } from "react-hook-form";
+
+// UI components
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -66,12 +79,20 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { Skeleton } from "@/components/ui/skeleton";
+
+// utils imports
 import { truncateHash } from "@/lib/utils";
+
+// components imports
 import CopyButton from "@/components/copy-button";
 import { getSigpassWallet } from "@/lib/sigpass";
+
+// jotai for state management
 import { useAtomValue } from "jotai";
 import { addressAtom } from "@/components/sigpasskit";
-import { Skeleton } from "@/components/ui/skeleton";
+
+// config
 import { localConfig } from "@/app/providers";
 
 export default function MintRedeemLstBifrost() {
@@ -171,22 +192,26 @@ export default function MintRedeemLstBifrost() {
   const { data, refetch: refetchBalance } = useReadContracts({
     contracts: [
       {
+        // get the balance of the selected token
         address: getContractAddress(selectedToken),
         abi: erc20Abi,
         functionName: "balanceOf",
         args: [address ? address : account.address],
       },
       {
+        // get the symbol of the selected token
         address: getContractAddress(selectedToken),
         abi: erc20Abi,
         functionName: "symbol",
       },
       {
+        // get the decimals of the selected token
         address: getContractAddress(selectedToken),
         abi: erc20Abi,
         functionName: "decimals",
       },
       {
+        // get the allowance of the selected token
         address: getContractAddress(selectedToken),
         abi: erc20Abi,
         functionName: "allowance",
@@ -201,10 +226,10 @@ export default function MintRedeemLstBifrost() {
 
 
   // extract the data from the read contracts hook
-  const maxBalance = data?.[0]?.result as bigint | undefined;
-  const symbol = data?.[1]?.result as string | undefined;
-  const decimals = data?.[2]?.result as number | undefined;
-  const mintAllowance = data?.[3]?.result as bigint | undefined;
+  const maxBalance = data?.[0]?.result as bigint | undefined; // balance of the selected token
+  const symbol = data?.[1]?.result as string | undefined; // symbol of the selected token
+  const decimals = data?.[2]?.result as number | undefined; // decimals of the selected token
+  const mintAllowance = data?.[3]?.result as bigint | undefined; // allowance of the selected token
 
   // extract the amount value from the form
   const amount = form.watch("amount");
@@ -216,7 +241,7 @@ export default function MintRedeemLstBifrost() {
     false;
 
 
-      // 2. Define a submit handler.
+  // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // if the user has a sigpass wallet, and the token is not GLMR, approve the token
     if (address) {
@@ -619,6 +644,7 @@ export default function MintRedeemLstBifrost() {
   );
 }
 
+// abi for the ERC20 token
 const erc20Abi = [
   {
     inputs: [
@@ -1447,7 +1473,7 @@ const erc20Abi = [
   },
 ];
 
-
+// ABI for the Moonbeam SLPX contract
 const moonbeamSlpxAbi = [
   {
     "anonymous": false,
