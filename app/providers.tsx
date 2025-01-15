@@ -7,6 +7,7 @@ import {
   getDefaultConfig,
 } from '@rainbow-me/rainbowkit';
 import {
+  phantomWallet,
   trustWallet,
   ledgerWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -72,7 +73,7 @@ const config = getDefaultConfig({
     ...wallets,
     {
       groupName: 'Other',
-      wallets: [trustWallet, ledgerWallet],
+      wallets: [phantomWallet, trustWallet, ledgerWallet],
     },
   ],
   chains: [
