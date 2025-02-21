@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Globe, AppWindowMac, File, Rocket } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -34,13 +35,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
+            <Rocket className="w-4 h-4" />
             Deploy now
           </a>
           <a
@@ -61,13 +56,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              aria-hidden
-              src="https://nextjs.org/icons/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-            />
+            <File className="w-4 h-4" />
             Learn
           </a>
           <a
@@ -76,13 +65,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              aria-hidden
-              src="https://nextjs.org/icons/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
-            />
+            <AppWindowMac className="w-4 h-4" />
             Components
           </a>
           <a
@@ -91,13 +74,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              aria-hidden
-              src="https://nextjs.org/icons/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-            />
+            <Globe className="w-4 h-4" />
             Go to openguild.wtf →
           </a>
         </div>
